@@ -1,3 +1,8 @@
+/*
+ * .dev.vars:
+ * TURSO_URL=https://your-db.region.turso.io
+ * TURSO_TOKEN=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9...
+ */
 interface Env {
 	TURSO_URL: string
 	TURSO_TOKEN: string
@@ -22,10 +27,10 @@ export default {
 				},
 				method: "POST",
 			})
-			const headers = Object.fromEntries(res.headers.entries())
+
 			const data = await res.json()
-			console.log("db-2", { data, headers, time: Date.now() - t })
-			return Response.json({ data, headers, time: Date.now() - t }, { headers: { "Content-Type": "application/json" } })
+
+			return Response.json({ data, headers: Object.fromEntries(res.headers.entries()), time: Date.now() - t }, { headers: { "Content-Type": "application/json" } })
 		}
 
 		return new Response("GET /db-2", { status: 200 })
