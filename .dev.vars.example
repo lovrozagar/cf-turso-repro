@@ -1,0 +1,3 @@
+# Turso database credentials - copy to .dev.vars
+TURSO_URL=https://your-db.turso.io
+TURSO_TOKEN=your-token
